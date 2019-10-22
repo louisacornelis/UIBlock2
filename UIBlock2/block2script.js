@@ -18,7 +18,7 @@ function deleteElement(id) {
 function like(id) {
     var likeIcon = document.getElementById(id);
     style = likeIcon.currentStyle || window.getComputedStyle(likeIcon, false);
-    if (style.backgroundImage.slice(-19, -2) == 'thumb_up-24px.svg'){
+    if (style.backgroundImage.slice(-19, -2) == 'thumb_up-24px.svg') {
         likeIcon.style.backgroundImage = "url('thumb_up_filled-24px.svg')";
     } else {
         likeIcon.style.backgroundImage = "url('thumb_up-24px.svg')";
@@ -51,7 +51,7 @@ function toggleMenu(id) {
     popup.classList.toggle("hide");
 }
 
-window.onload = function(){
+function dateTimeOnload() {
     getDateTime(["datetime1", "datetime2"]);
 }
 

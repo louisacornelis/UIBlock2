@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="block2style.css">
     <title>Tutorial</title>
     <script src="block2script.js"></script>
+    <script src="block2LogoutScript.js"></script>
 </head>
 
 
@@ -18,7 +19,7 @@
     <div class="title">
         <div class="round menuItem myProfile">My Profile</div>
         <div class="round menuItem myReviews">My Reviews</div>
-        <div class="round menuItem logOut">Log Out</div>
+        <div id="accountContainer"></div>
     </div>
 </div>
 <div class="container">
@@ -38,9 +39,9 @@
         </div>
         <div class="round post" id="round1">
             <div class="message">
-                    <img class="postIcon"
-                         src=https://i.pinimg.com/originals/3c/da/da/3cdadab531ce5ccd0c0f16ac214ca0f7.jpg
-                         alt="Apple" width="75" height='75'></img>
+                <img class="postIcon"
+                     src=https://i.pinimg.com/originals/3c/da/da/3cdadab531ce5ccd0c0f16ac214ca0f7.jpg
+                     alt="Apple" width="75" height='75'></img>
                 <div class="postText"> Here is the text and it wraps</div>
                 <div>
                     <button class="closeButton" onclick="displayClosePopup('round1')">x
@@ -60,23 +61,23 @@
                 <div class="popup postIcon">
                     <div class="shareIcon" onclick="toggleMenu('socialMediaMenu1')"></div>
                     <span class="popuptext" id="sharePopup"> Click on the icon to share this post </span>
-                    <div class="popuptext hide" id ="socialMediaMenu1">
+                    <div class="popuptext hide" id="socialMediaMenu1">
                         Share Parrondo Bar
                         <img src="instagram.svg" width="25" height='25'>
                         <img src="icons8-facebook-48.png" width="25" height='25'>
                         <img src="twitter-squared-48.png" width="25" height='25'>
                     </div>
                 </div>
-                <p class= "dateTime" id="datetime1"></p>
+                <p class="dateTime" id="datetime1"></p>
             </div>
 
         </div>
 
         <div class="round post" id="round2">
             <div class="message">
-                    <img class="postIcon"
-                         src=https://www.caffesociety.co.uk/assets/recipe-images/latte-small.jpg
-                         alt="Apple" width="75" height='75'></img>
+                <img class="postIcon"
+                     src=https://www.caffesociety.co.uk/assets/recipe-images/latte-small.jpg
+                     alt="Apple" width="75" height='75'></img>
                 <div class="postText"> Hola Coffee Bar</div>
                 <div>
                     <button class="closeButton" onclick="displayClosePopup('round2')">x
@@ -87,7 +88,7 @@
             <div class="messageFooter">
                 <div class="popup postIcon">
                     <div class="likeIcon" id="secondRestaurant" onclick="like('secondRestaurant')"></div>
-                    <span class="popuptext" > Click on the icon to 'like' this post </span>
+                    <span class="popuptext"> Click on the icon to 'like' this post </span>
                 </div>
                 <div class="popup  postIcon">
                     <div class="commentIcon"></div>
@@ -95,8 +96,8 @@
                 </div>
                 <div class="popup postIcon">
                     <div class="shareIcon" onclick="toggleMenu('socialMediaMenu2')"></div>
-                    <span class="popuptext" > Click on the icon to share this post </span>
-                    <div class="popuptext hide" id ="socialMediaMenu2">
+                    <span class="popuptext"> Click on the icon to share this post </span>
+                    <div class="popuptext hide" id="socialMediaMenu2">
                         Share Hola Coffee <br>
                         <img src="instagram.svg" width="25" height='25'>
                         <img src="icons8-facebook-48.png" width="25" height='25'>
@@ -139,10 +140,55 @@
             </div>
         </div>
     </div>
-    <!-- <footer class="footer round"> 
-        <a href="https://www.facebook.com">Facebook</a> |
-        <a href="https://www.twitter.com">Twitter </a> |
-        Copyright: Louisa Cornelis and Aly Hummel 
-    </footer> -->
 </div>
+<div class="container">
+    <div class="round bottomContainers">
+        <h1>Login</h1>
+        <form id="logIn">
+            <label>Username :<input type="text" required><br></label>
+            <label>Password :<input type="password" required><br></label>
+            <button onsubmit="login(event)">login</button>
+        </form>
+    </div>
+    <div class="round bottomContainers">
+        <h1>register</h1>
+        <form id="register" onsubmit="save(event)" onabort="del(event)">
+            <h2>Account information</h2>
+            <label>Username :<input id="username" type="text" required><br></label>
+
+            <label>Password :<input id="password" type="password" required maxlength="8" pattern="[0-9a-zA-Z]{0-8}"><br></label>
+
+            <input id="inputFile" type='file'/>
+            <h2>Personal information</h2>
+            <label>Name :<input type="text" required><br></label>
+            <label>Surname :<input type="text" required><br></label>
+            <label>Email :<input type="email" required><br></label>
+            <label>Date of birth :<input type="date" required><br></label>
+            <fieldset>
+                <legend>Interests</legend>
+                <div><label> <input type=checkbox> Art </label></div>
+                <div><label> <input type=checkbox> Food </label></div>
+                <div><label> <input type=checkbox> Cooking </label></div>
+                <div><label> <input type=checkbox> Travel </label></div>
+                <div><label> <input type=checkbox> Concerts </label></div>
+            </fieldset>
+            <fieldset>
+                <legend>primary Language</legend>
+                <div><label> <input type=radio name=Language> Flemish </label></div>
+                <div><label> <input type=radio name=Language> Spanish </label></div>
+                <div><label> <input type=radio name=Language> English </label></div>
+                <div><label> <input type=radio name=Language> French </label></div>
+                <div><label> <input type=radio name=Language> Italian </label></div>
+            </fieldset>
+            <label>App purpose :<input type="text"><br></label>
+            <button type="reset">delete</button>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</div>
+<footer class="footer round">
+    <a href="https://www.facebook.com">Facebook</a> |
+    <a href="https://www.twitter.com">Twitter </a> |
+    Copyright: Louisa Cornelis and Aly Hummel
+</footer>
 </body>
