@@ -22,6 +22,10 @@ function accountInitOnLoad() {
         accountContainer.appendChild(logOut);
         accountContainer.addEventListener("click", logout);
     } else {
+        var logIn = document.createElement("div");
+        logIn.innerText = "Log In";
+        logIn.classList = "round menuItem logOut";
+        accountContainer.appendChild(logIn);
     }
 }
 
