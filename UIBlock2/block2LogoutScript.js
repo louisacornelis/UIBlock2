@@ -5,6 +5,15 @@ function logout() {
     document.cookie = "Logged=false"
 }
 
+function login(){ 
+    accountContainer.innerHTML = "Log Out";
+    document.cookie = "Logged=true"
+}
+
+function register(){
+    var registerInterface = documentgetElementById("LoginContainer");
+    registerInterface.style.display = "flex";
+}
 
 window.onload = function () {
     dateTimeOnload();
@@ -12,20 +21,28 @@ window.onload = function () {
 };
 
 function accountInitOnLoad() {
-    accountContainer = document.getElementById("accountContainer");
+    loginContainer = document.getElementById("LoginButton");
+    registerContainer = document.getElementById("registerButton")
     let logged = getCookie('Logged');
     console.log(logged);
     if (logged == "true") {
         var logOut = document.createElement("div");
-        logOut.innerText = "Logout";
+        logOut.innerText = "Log Out";
         logOut.classList = "round menuItem logOut";
-        accountContainer.appendChild(logOut);
-        accountContainer.addEventListener("click", logout);
+        loginContainer.appendChild(logOut);
+        loginContainer.addEventListener("click", logout);
     } else {
+        var register = document.createElement("div");
+        register.innerText = "Register";
+        register.classList = "round menuItem logOut";
+        registerContainer.appendChild(register);
+        registerContainer.addEventListener("click", register);
+
         var logIn = document.createElement("div");
         logIn.innerText = "Log In";
         logIn.classList = "round menuItem logOut";
-        accountContainer.appendChild(logIn);
+        loginContainer.appendChild(logIn);
+        loginContainer.addEventListener("click", login);
     }
 }
 
