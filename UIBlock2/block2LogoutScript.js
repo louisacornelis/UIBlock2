@@ -11,8 +11,28 @@ function login(){
 }
 
 function register(){
-    var registerInterface = documentgetElementById("LoginContainer");
+    hide();
+    var registerInterface = document.getElementById("registerContainer");
     registerInterface.style.display = "flex";
+}   
+
+function displayLogIn() {
+    hide();
+    var logInInterface = document.getElementById("logInContainer");
+    logInInterface.style.display = "flex";
+}
+
+function hide() {
+    var restaurants = document.getElementById("Restaurants");
+    restaurants.style.display = "none";
+    var museums = document.getElementById("Museums");
+    museums.style.display = "none";
+    var movies = document.getElementById("Movies");
+    movies.style.display = "none";
+    var logInInterface = document.getElementById("logInContainer");
+    logInInterface.style.display = "none";
+    var registerInterface = document.getElementById("registerContainer");
+    registerInterface.style.display = "none";
 }
 
 window.onload = function () {

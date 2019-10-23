@@ -1,0 +1,243 @@
+body {
+    background: #41B3A3;
+    box-sizing: border-box;
+}
+
+.round {
+    border-radius: 25px;
+    font-family: 'Lucida Grande', serif;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.title {
+    background: #FFC0CB;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer {
+    background: #FFC0CB;
+    min-width: 100%;
+    flex: 1;
+}
+
+.menuItem {
+    background: #E27D60;
+    color: #475151;
+    font-size: 20px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin: 5px;
+    height: 40px;
+}
+
+.siteImage {
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.siteTitle {
+    background: #FFC0CB;
+}
+
+.dropContainers{
+    
+}
+
+.bottomContainers {
+    font-family: 'Lucida Grande', serif;
+    font-size: 20px;
+    color: #475151;
+    background: #C38D9E;
+    flex: 1;
+    margin: 10px;
+    padding: 5px;
+    height: max-content;
+}
+
+.bottomTitleContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.eventTitle {
+    background: #C38D9E;
+}
+
+.hamburgerMenuButton {
+    background: #C38D9E;
+    background-image: url("menu+24px.png");
+    overflow: auto;
+    padding-top: 25px;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.hamburgerMenu {
+    position: absolute;
+    background: #E27D60;
+}
+
+.post {
+    background: #85dcb8;
+    margin: 15px;
+}
+
+.postText {
+    display: flex;
+    align-items: center;
+    background: #85dcb8;
+    padding: 10px
+}
+
+.postIcon {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background: #85dcb8;
+    border-radius: 50%;
+    margin: 1em 0.1em
+}
+
+.closeButton {
+    background: white;
+}
+
+.likeIcon {
+    background: #85dcb8;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+    background-image: url("thumb_up-24px.svg");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+}
+
+.commentIcon {
+    background: #85dcb8;
+    height: 25px;
+    width: 25px;
+    background-image: url("chat_bubble_outline-24px.svg");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+}
+
+.shareIcon {
+    background: #85dcb8;
+    height: 25px;
+    width: 25px;
+    background-image: url("share-24px.svg");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+}
+
+.dateTime {
+    display: flex;
+    align-items: flex-end;
+    background: #85dcb8;
+}
+
+/* Popup container */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+.popup:hover .popuptext {
+    visibility: visible;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+    overflow: visible;
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+.hide {
+    display: none;
+}
+
+.menuContainer {
+    width: 200px;
+}
+
+.message {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.messageFooter {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+

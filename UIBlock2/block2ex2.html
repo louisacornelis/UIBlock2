@@ -19,8 +19,8 @@
     <div class="title">
         <div class="round menuItem myProfile">My Profile</div>
         <div class="round menuItem myReviews">My Reviews</div>
-        <div id="LoginButton"></div>
-        <div id="registerButton"></div>
+        <div id="LoginButton" onclick="displayLogIn()"></div>
+        <div id="registerButton" onclick="register()"></div>
     </div>
 </div>
 <div class="container">
@@ -143,16 +143,16 @@
     </div>
 </div>
 <div class="container">
-    <div class="round bottomContainers"  style="display:none;">
-        <h1>Log In</h1>
+    <div class="round bottomContainers" style="display:none;" id="logInContainer">
+        <div class="logInRegisterTitleContainer"><h1>Log In</h1></div> 
         <form id="logIn">
             <label>Username :<input type="text" required><br></label>
             <label>Password :<input type="password" required><br></label>
             <button onsubmit="login(event)">Login</button>
         </form>
     </div>
-    <div class="round bottomContainers">
-        <h1>Register</h1>
+    <div class="round bottomContainers" style="display:none;" id="registerContainer">
+        <div class="logInRegisterTitleContainer"><h1>Register</h1></div> 
         <form id="register" onsubmit="save(event)" onabort="del(event)">
             <h2>Account information</h2>
             <label>Username :<input id="username" type="text" required><br></label>

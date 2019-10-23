@@ -234,3 +234,20 @@ body {
     display: flex;
     justify-content: center;
 }
+
+.logInRegisterContainer {
+    display: grid;
+    grid-template-rows: auto, auto;
+}
+
+.logInRegisterTitleContainer {
+    grid-row: 1/2;
+}
+
+form {
+    grid-row: 2/3;
+}
+
+
+
+

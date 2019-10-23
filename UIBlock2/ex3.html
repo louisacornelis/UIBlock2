@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="ex3.css">
+    <title>Tutorial</title>
+    <script src="ex3.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.js"></script> 
+    <script type="text/javascript" src="jquery-ui-1.12.1/jquery-ui.js"></script> 
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+</head>
+
+
+<body>
+<div class="round title">
+    <img class="siteImage" src="https://cdn.dribbble.com/users/1539540/screenshots/4296437/house_animation.gif"
+         alt="House Cartoon" width="75" height="75"></img>
+    <h1 class="siteTitle">Activity Finder</h1>
+    <div class="title">
+        <div class="round menuItem myProfile">My Profile</div>
+        <div class="round menuItem myReviews">My Reviews</div>
+        <div class="round menuItem myReviews">Log Out</div>
+    </div>
+</div>
+<div class="container">
+    <div class="dropContainers">
+    <div id="Restaurants" class="round bottomContainers">
+        <div class="bottomTitleContainer">
+            <h3 class="eventTitle"> Restaurants </h3>
+            <div class="menuContainer">
+                <div class="hamburgerMenuButton" onclick="toggleMenu('restaurantsMenu')"></div>
+                <ul class="hamburgerMenu hide round" id="restaurantsMenu">
+                    <li onclick="displayClosePopup('Restaurants','Are you sure you want to archive this list?')">Archive
+                        This List
+                    </li>
+                    <li>Star this section</li>
+                    <li>Add Post</li>
+                </ul>
+            </div>
+        </div>
+        <div class="round post" id="round1">
+            <div class="message">
+                <img class="postIcon"
+                     src=https://i.pinimg.com/originals/3c/da/da/3cdadab531ce5ccd0c0f16ac214ca0f7.jpg
+                     alt="Apple" width="75" height='75'></img>
+                <div class="postText"> Here is the text and it wraps</div>
+                <div>
+                    <button class="closeButton" onclick="displayClosePopup('round1')">x
+                    </button>
+                </div>
+            </div>
+
+            <div class="messageFooter">
+                <div class="popup postIcon">
+                    <div class="likeIcon" id="firstRestaurant" onclick="like('firstRestaurant')"></div>
+                    <span class="popuptext" id="likePopup"> Click on the icon to 'like' this post </span>
+                </div>
+                <div class="popup postIcon">
+                    <div class="commentIcon"></div>
+                    <span class="popuptext" id="commentPopup"> Click on the icon to comment on this post </span>
+                </div>
+                <div class="popup postIcon">
+                    <div class="shareIcon" onclick="toggleMenu('socialMediaMenu1')"></div>
+                    <span class="popuptext" id="sharePopup"> Click on the icon to share this post </span>
+                    <div class="popuptext hide" id="socialMediaMenu1">
+                        Share Parrondo Bar
+                        <img src="instagram.svg" width="25" height='25'>
+                        <img src="icons8-facebook-48.png" width="25" height='25'>
+                        <img src="twitter-squared-48.png" width="25" height='25'>
+                    </div>
+                </div>
+                <p class="dateTime" id="datetime1"></p>
+            </div>
+
+        </div>
+
+        <div class="round post" id="round2">
+            <div class="message">
+                <img class="postIcon"
+                     src=https://www.caffesociety.co.uk/assets/recipe-images/latte-small.jpg
+                     alt="Apple" width="75" height='75'></img>
+                <div class="postText"> Hola Coffee Bar</div>
+                <div>
+                    <button class="closeButton" onclick="displayClosePopup('round2')">x
+                    </button>
+                </div>
+            </div>
+
+            <div class="messageFooter">
+                <div class="popup postIcon">
+                    <div class="likeIcon" id="secondRestaurant" onclick="like('secondRestaurant')"></div>
+                    <span class="popuptext"> Click on the icon to 'like' this post </span>
+                </div>
+                <div class="popup  postIcon">
+                    <div class="commentIcon"></div>
+                    <span class="popuptext"> Click on the icon to comment on this post </span>
+                </div>
+                <div class="popup postIcon">
+                    <div class="shareIcon" onclick="toggleMenu('socialMediaMenu2')"></div>
+                    <span class="popuptext"> Click on the icon to share this post </span>
+                    <div class="popuptext hide" id="socialMediaMenu2">
+                        Share Hola Coffee <br>
+                        <img src="instagram.svg" width="25" height='25'>
+                        <img src="icons8-facebook-48.png" width="25" height='25'>
+                        <img src="twitter-squared-48.png" width="25" height='25'>
+                    </div>
+                </div>
+                <p id="datetime2"></p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="dropContainers">
+    <div id="Movies" class="round bottomContainers">
+        <div class="bottomTitleContainer">
+            <h3 class="eventTitle"> Movies </h3>
+            <div class="menuContainer">
+                <div class="hamburgerMenuButton" onclick="toggleMenu('moviesMenu')"></div>
+                <ul class="hamburgerMenu hide round" id="moviesMenu">
+                    <li onclick="displayClosePopup('Movies','Are you sure you want to archive this list?')">Archive This
+                        List
+                    </li>
+                    <li>Star this section</li>
+                    <li>Add Post</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="dropContainers">
+    <div id="Museums" class="round bottomContainers">
+        <div class="bottomTitleContainer">
+            <h3 class="eventTitle"> Museums </h3>
+            <div class="menuContainer">
+                <div class="hamburgerMenuButton" onclick="toggleMenu('museumsMenu')"></div>
+                <ul class="hamburgerMenu hide round" id="museumsMenu">
+                    <li onclick="displayClosePopup('Museums','Are you sure you want to archive this list?')">Archive
+                        This List
+                    </li>
+                    <li>Star this section</li>
+                    <li>Add Post</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<footer class="footer round">
+    <a href="https://www.facebook.com">Facebook</a> |
+    <a href="https://www.twitter.com">Twitter </a> |
+    Copyright: Louisa Cornelis and Aly Hummel
+</footer>
+</body>
+
+<script>
+$(document).ready(function() {
+    $(".post").draggable({revert: "valid"});
+    $(".bottomContainers").draggable({revert: "valid"});
+    $(".bottomContainers").droppable(
+        {
+        accept: ".post",
+        drop: function(ev, ui) {
+            var droppedPost = $(ui.draggable);
+            $(this).append(droppedPost);
+        }
+        }
+    );
+
+    $(".dropContainers").droppable(
+        {
+        accept: ".bottomContainers",
+        drop: function(ev, ui) {
+            var bottomContainers = $(ui.draggable);
+            $(this).append(bottomContainers);
+        }
+        }
+    );
+
+    
+});
+
+</script>
