@@ -8,6 +8,12 @@
     <title>Tutorial</title>
     <script src="block2script.js"></script>
     <script src="block2LogoutScript.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="jquery-ui-1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
 </head>
 
 
@@ -17,13 +23,12 @@
          alt="House Cartoon" width="75" height="75"></img>
     <h1 class="siteTitle">Activity Finder</h1>
     <div class="title">
-        <div class="round menuItem myProfile">My Profile</div>
         <div class="round menuItem myReviews">My Reviews</div>
         <div id="LoginButton" onclick="displayLogIn()"></div>
         <div id="registerButton" onclick="register()"></div>
     </div>
 </div>
-<div class="container">
+<div id="mainContainer" class="container">
     <div id="Restaurants" class="round bottomContainers">
         <div class="bottomTitleContainer">
             <h3 class="eventTitle"> Restaurants </h3>
@@ -71,6 +76,7 @@
                 </div>
                 <p class="dateTime" id="datetime1"></p>
             </div>
+
 
         </div>
 
@@ -143,29 +149,29 @@
     </div>
 </div>
 <div class="container">
-    <div class="round bottomContainers" style="display:none;" id="logInContainer">
-        <div class="logInRegisterTitleContainer"><h1>Log In</h1></div> 
+    <div class="round bottomContainers flex-column" style="display:none;" id="logInContainer">
+        <div class="logInRegisterTitleContainer"><h1>Log In</h1></div><br>
         <form id="logIn">
-            <label>Username :<input type="text" required><br></label>
+            <label>Email :<input type="text" required><br></label>
             <label>Password :<input type="password" required><br></label>
             <button onsubmit="login(event)">Login</button>
         </form>
     </div>
-    <div class="round bottomContainers" style="display:none;" id="registerContainer">
+    <div class="round bottomContainers flex-column" style="display:none;" id="registerContainer">
         <div class="logInRegisterTitleContainer"><h1>Register</h1></div> 
         <form id="register" onsubmit="save(event)" onabort="del(event)">
-            <h2>Account information</h2>
+            <h2>Account information</h2><br>
             <label>Username :<input id="username" type="text" required><br></label>
 
             <label>Password :<input id="password" type="password" required maxlength="8" pattern="[0-9a-zA-Z]{0-8}"><br></label>
 
             <input id="inputFile" type='file'/>
             <h2>Personal information</h2>
-            <label>Name :<input type="text" required><br></label>
-            <label>Surname :<input type="text" required><br></label>
-            <label>Email :<input type="email" required><br></label>
-            <label>Date of birth :<input type="date" required><br></label>
-            <fieldset>
+            <label>Name :<input id="name" type="text" required><br></label>
+            <label>Surname :<input id="surname" type="text" required><br></label>
+            <label>Email :<input id="email" type="email" required><br></label>
+            <label>Date of birth :<input id="birthday" type="date" required><br></label>
+            <fieldset id="interest">
                 <legend>Interests</legend>
                 <div><label> <input type=checkbox> Art </label></div>
                 <div><label> <input type=checkbox> Food </label></div>
@@ -173,7 +179,7 @@
                 <div><label> <input type=checkbox> Travel </label></div>
                 <div><label> <input type=checkbox> Concerts </label></div>
             </fieldset>
-            <fieldset>
+            <fieldset id="language">
                 <legend>Primary Language</legend>
                 <div><label> <input type=radio name=Language> Flemish </label></div>
                 <div><label> <input type=radio name=Language> Spanish </label></div>
@@ -181,7 +187,8 @@
                 <div><label> <input type=radio name=Language> French </label></div>
                 <div><label> <input type=radio name=Language> Italian </label></div>
             </fieldset>
-            <label>App purpose :<input type="text"><br></label>
+            <label>App purpose :<input id="purpose" type="text"><br></label>
+            <label> <input required type=checkbox> I have read the terms of use  </label><br>
             <button type="reset">Delete</button>
             <button type="submit">Save</button>
         </form>
