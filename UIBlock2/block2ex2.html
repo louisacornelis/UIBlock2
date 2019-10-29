@@ -24,7 +24,7 @@
     <h1 class="siteTitle">Activity Finder</h1>
     <div class="title">
         <div class="round menuItem myReviews">My Reviews</div>
-        <div id="LoginButton" onclick="displayLogIn()"></div>
+        <div id="LoginButton"></div>
         <div id="registerButton" onclick="register()"></div>
     </div>
 </div>
@@ -151,10 +151,10 @@
 <div class="container">
     <div class="round bottomContainers flex-column" style="display:none;" id="logInContainer">
         <div class="logInRegisterTitleContainer"><h1>Log In</h1></div><br>
-        <form id="logIn">
-            <label>Email :<input type="text" required><br></label>
-            <label>Password :<input type="password" required><br></label>
-            <button onsubmit="login(event)">Login</button>
+        <form id="logIn" onsubmit="login(event)">
+            <label>Email :<input id="loginEmail" type="email" required><br></label>
+            <label>Password :<input id="loginPw" type="password" required><br></label>
+            <button type="submit">Login</button>
         </form>
     </div>
     <div class="round bottomContainers flex-column" style="display:none;" id="registerContainer">

@@ -1,14 +1,32 @@
 var accountContainer;
 
 function logout() {
-    console.log("sdds");
     document.cookie = "Logged=out";
     accountInitOnLoad();
 }
 
-function login() {
-    accountContainer.innerHTML = "Log Out";
-    document.cookie = "Logged=true"
+function login(e) {
+    console.log("test");
+    e.preventDefault();
+    let emailel = document.getElementById("loginEmail");
+    let passwordel = document.getElementById("loginPw");
+    let email = emailel.value;
+    let password = passwordel.value;
+    let cookie = getCookie(email);
+    if (cookie) {
+        let userInfo = JSON.parse(cookie);
+        if (userInfo.password === password) {
+            emailel.value = "";
+            passwordel.value = "";
+            setCookieLogged(email);
+            accountInitOnLoad();
+        } else {
+            alert("wrong password");
+        }
+    } else {
+        alert("email not known");
+    }
+
 }
 
 function register() {
@@ -45,26 +63,31 @@ window.onload = function () {
 
 function accountInitOnLoad() {
     loginContainer = document.getElementById("LoginButton");
-    registerContainer = document.getElementById("registerButton")
+    registerContainer = document.getElementById("registerButton");
     let logged = getCookie('Logged');
-    console.log(logged);
     let mainContainer = document.getElementById("mainContainer");
     loginContainer.innerHTML = "";
     registerContainer.innerHTML = "";
-    if (logged != "out") {
+    if (logged !== "out") {
         displayMainContainer();
         console.log('logged in');
+        let src = localStorage.getItem("IMG_" + getCookie("Logged"));
         mainContainer.style.visibility = "unset";
-        var logOut = document.createElement("div");
+        var logOutEl = document.createElement("div");
         var profile = document.createElement("div");
+        var image = document.createElement("img");
+        var name = document.createElement("p");
         let user = JSON.parse(getCookie(logged));
-        profile.innerText = user.name;
+        name.innerText = user.name;
+        image.src = src ? src : "default-profile-picture.png";
+        image.classList = "profile";
         profile.classList = "round menuItem logOut";
-
-        logOut.innerText = "Log Out";
-        logOut.classList = "round menuItem logOut";
-        loginContainer.appendChild(logOut);
-        loginContainer.addEventListener("click", logout);
+        profile.appendChild(image);
+        profile.appendChild(name);
+        logOutEl.innerText = "Log Out";
+        logOutEl.classList = "round menuItem logOut";
+        loginContainer.appendChild(logOutEl);
+        logOutEl.addEventListener("click", logout);
         registerContainer.appendChild(profile);
     } else {
         console.log('logged out');
@@ -79,15 +102,17 @@ function accountInitOnLoad() {
         logIn.innerText = "Log In";
         logIn.classList = "round menuItem logOut";
         loginContainer.appendChild(logIn);
-        loginContainer.addEventListener("click", login);
+        logIn.addEventListener('click', displayLogIn);
     }
 }
 
+function setCookieLogged(email) {
+    document.cookie = "Logged=" + email;
+}
 
-function setCookie(logged, userInfo) {
+function setCookieUser(userInfo) {
+    setCookieLogged(userInfo.email);
     document.cookie = userInfo.email + "=" + JSON.stringify(userInfo);
-    document.cookie = "Logged=" + userInfo.email;
-
 }
 
 function getCookie(cname) {
@@ -105,19 +130,6 @@ function getCookie(cname) {
     return "";
 }
 
-function checkCookie() {
-    var user = getCookie("username");
-    if (user != "") {
-        alert("Welcome again " + user);
-    } else {
-        user = prompt("Please enter your name:", "");
-        if (user != "" && user != null) {
-            setCookie("username", user, 365);
-        }
-    }
-}
-
-
 function save(e) {
     e.preventDefault();
 
@@ -130,24 +142,26 @@ function save(e) {
     let interest = getAllSelected(document.getElementById("interest"));
     let language = getAllSelected(document.getElementById("language"));
     let purpose = document.getElementById("purpose").value;
-    let image= document.getElementById("inputFile");
-    readURL(email,image);
-
-
-    userInfo = {
-        "username": username,
-        "password": password,
-        "name": name,
-        "surname": surname,
-        "email": email,
-        "birthday": birthday,
-        "interest": interest,
-        "language": language,
-        "purpose": purpose
-    };
-    console.log(JSON.stringify(userInfo));
-    setCookie(true, userInfo);
-    accountInitOnLoad();
+    let image = document.getElementById("inputFile");
+    readURL(email, image);
+    if (getCookie(email)) {
+        alert("email already exist");
+    } else {
+        userInfo = {
+            "username": username,
+            "password": password,
+            "name": name,
+            "surname": surname,
+            "email": email,
+            "birthday": birthday,
+            "interest": interest,
+            "language": language,
+            "purpose": purpose
+        };
+        console.log(JSON.stringify(userInfo));
+        setCookieUser(userInfo);
+        accountInitOnLoad();
+    }
 }
 
 function getAllSelected(fieldset) {
@@ -168,22 +182,13 @@ function del(e) {
     console.log(e)
 }
 
-function readURL(email,input) {
+function readURL(email, input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            console.log("yes");
             console.log(e.target.result);
-             document.cookie= "IMG_"+email+"="+e.target.result
+            localStorage.setItem("IMG_" + email, e.target.result);
         };
         reader.readAsDataURL(input.files[0]);
     }
 }
-
-// "Save" and "Delete" buttons
-// o By clicking on the "save" button, a cookie will be stored with all the information
-// contained
-// in the form. If there is a cookie with the same email, the user will be notified that
-// there is
-// already an account associated with the specified email.
-//     o By clicking on the "delete" button, the initial information of the form will be

@@ -13,6 +13,11 @@ body {
     flex-wrap: wrap;
 }
 
+.profile {
+    height: 100%;
+    border-radius: 25px;
+}
+
 .title {
     background: #FFC0CB;
     padding: 10px;
@@ -249,7 +254,7 @@ form {
 }
 
 
-.flex-column{
+.flex-column {
     flex-direction: column;
 }
 
