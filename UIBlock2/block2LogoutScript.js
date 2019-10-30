@@ -84,6 +84,7 @@ function accountInitOnLoad() {
         let user = JSON.parse(getCookie(logged));
         name.innerText = user.username;
         image.src = src ? src : 'default-profile-picture.png';
+        image.id = 'profilePic';
         image.classList = 'profile';
         profile.classList = 'round menuItem logOut';
         profile.appendChild(image);
@@ -192,8 +193,12 @@ function readURL(email, input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            console.log(e.target.result);
-            localStorage.setItem('IMG_' + email, e.target.result);
+            const src = e.target.result;
+            localStorage.setItem('IMG_' + email, src);
+            let profilePicture = document.getElementById('profilePic');
+            if (profilePicture) {
+                profilePicture.src = src;
+            }
         };
         reader.readAsDataURL(input.files[0]);
     }
