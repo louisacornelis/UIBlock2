@@ -21,10 +21,10 @@ function login(e) {
             setCookieLogged(email);
             accountInitOnLoad();
         } else {
-            alert("wrong password");
+            alert("Incorrect Password");
         }
     } else {
-        alert("email not known");
+        alert("Unregistered Email");
     }
 
 }
