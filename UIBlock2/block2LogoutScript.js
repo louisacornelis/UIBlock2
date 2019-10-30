@@ -162,6 +162,8 @@ function save(e) {
         setCookieUser(userInfo);
         accountInitOnLoad();
     }
+    var frm = document.getElementById("register");
+    frm.reset();
 }
 
 function getAllSelected(fieldset) {
