@@ -64,13 +64,13 @@ window.onload = function () {
 function accountInitOnLoad() {
     loginContainer = document.getElementById("LoginButton");
     registerContainer = document.getElementById("registerButton");
-    let logged = getCookie('Logged');
+    let logged = getCookie("Logged");
     let mainContainer = document.getElementById("mainContainer");
     loginContainer.innerHTML = "";
     registerContainer.innerHTML = "";
     if (logged !== "out") {
         displayMainContainer();
-        console.log('logged in');
+        console.log("logged in");
         let src = localStorage.getItem("IMG_" + getCookie("Logged"));
         mainContainer.style.visibility = "unset";
         var logOutEl = document.createElement("div");
@@ -78,7 +78,7 @@ function accountInitOnLoad() {
         var image = document.createElement("img");
         var name = document.createElement("p");
         let user = JSON.parse(getCookie(logged));
-        name.innerText = user.name;
+        name.innerText = user.username;
         image.src = src ? src : "default-profile-picture.png";
         image.classList = "profile";
         profile.classList = "round menuItem logOut";
@@ -90,7 +90,7 @@ function accountInitOnLoad() {
         logOutEl.addEventListener("click", logout);
         registerContainer.appendChild(profile);
     } else {
-        console.log('logged out');
+        console.log("logged out");
         mainContainer.style.visibility = "hidden";
         var register = document.createElement("div");
         register.innerText = "Register";
@@ -117,10 +117,10 @@ function setCookieUser(userInfo) {
 
 function getCookie(cname) {
     var name = cname + "=";
-    var ca = document.cookie.split(';');
+    var ca = document.cookie.split(";");
     for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
-        while (c.charAt(0) == ' ') {
+        while (c.charAt(0) == " ") {
             c = c.substring(1);
         }
         if (c.indexOf(name) == 0) {
@@ -145,7 +145,7 @@ function save(e) {
     let image = document.getElementById("inputFile");
     readURL(email, image);
     if (getCookie(email)) {
-        alert("email already exist");
+        alert("This email is already registered.");
     } else {
         userInfo = {
             "username": username,
